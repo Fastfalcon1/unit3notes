@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <h3>what is this?</h3>
+        <h4>i dont want this</h4>
+    </div>
+</div>
+<script>
+    const content = document.querySelector('.content');
+    content.innerHTML = '<h1 class="gone">i love zelda</h1><h4>other msg</h4>';
+
+    const mario = document.createElement('h1');
+    mario.innerHTML = 'i love zelda';
+    content.appendChild(mario);
+
+    const luigi = document.createElement('h1');
+    luigi.innerHTML = 'i love luigi';
+    content.appendChild(luigi);
+
+    const peach = document.createElement('h1');
+    peach.innerHTML = 'i love peach';
+    content.appendChild(peach);
+
+    const food = document.createElement('h1');
+    food.innerHTML = 'i love pizza';
+    content.insertAdjacentElement('afterend', food);
+
+    const unwantedElement = document.querySelector('h4');
+    unwantedElement.remove();
+
+    const unwantedElement2 = document.querySelector('.gone');
+    unwantedElement2.remove();
+</script>
+</body>
+</html>

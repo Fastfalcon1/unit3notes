@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>clicker</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .red{
+            background-color:red;
+        }
+        .avatar{
+            background-color: blue;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="result"></div>
+    <p>Click the button to see the counter increase.</p>
+    <p>Close the browser tab (or window), and try again, and the counter will continue to count (is not reset).</p>
+    <div class="content">
+        <div class="row">
+            <p><button onclick="clickCounter()" type="button">Click me!</button></p>
+            <button id="clear">clear</button>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    const clearButton = document.getElementById('clear')
+    const content = document.querySelector('.content');
+    function clickCounter() {
+        if (typeof(Storage) !== "undefined") {
+            if (localStorage.clickcount) {
+                localStorage.clickcount = Number(localStorage.clickcount)+1;
+            } else {
+                localStorage.clickcount = 0;
+            }
+            document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+        } else {
+            document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+        }
+    }
+
+    clearButton.addEventListener('click', function(e){
+        localStorage.clear();
+    });
+
+</script>
+</body>
+</html>

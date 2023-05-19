@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clicker Counter</title>
+    <style>
+        .counter {
+            font-size: 24px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Clicker Counter</h1>
+<div class="counter">0</div>
+<div class="button-container">
+    <button onclick="incrementCounter()">Click me!</button>
+    <button onclick="clearCounter()">Clear</button>
+</div>
+
+<script>
+    var counter = 0;
+
+    function incrementCounter() {
+        counter++;
+        document.querySelector('.counter').innerHTML = counter;
+    }
+
+    function clearCounter() {
+        counter = 0;
+        document.querySelector('.counter').innerHTML = counter;
+    }
+</script>
+</body>
+</html>

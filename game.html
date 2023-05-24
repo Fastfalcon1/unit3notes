@@ -2,7 +2,12 @@
 <html>
 <head>
     <title>Clicker Counter</title>
+    <link rel="stylesheet" href="style.css">
     <style>
+        body{
+            background-color: pink;
+            color: black;
+        }
         .counter {
             font-size: 24px;
             text-align: center;
@@ -20,7 +25,26 @@
     </style>
 </head>
 <body>
-<h1>Clicker Counter</h1>
+<div class="container">
+    <div class="content">
+        <h4>#1. DeviousWitch has (CLICKS)!</h4>
+        <h4>#2. Smuker has (clicks)!</h4>
+        <h4>#3.kalge has (clicks)!</h4>
+        <div class="row">
+            <div>
+                <label for="first">first name</label>
+                <input type="text" id="first" name="first_name" placeholder="jane">
+            </div>
+            <div>
+                <label for="last">first name</label>
+                <input type="text" id="last" name="last_name" placeholder="doe">
+            </div>
+        </div>
+        <button name="clear">clear</button>
+        <p class="hidden"></p>
+    </div>
+</div>
+<h2>Leaderboard</h2>
 <div class="counter">0</div>
 <div class="button-container">
     <button onclick="incrementCounter()">Click me!</button>

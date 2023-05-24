@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clicker</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <style>
+        body{
+            background-color: pink;
+            color: black;
+        }
+        .hidden{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <h2 id="lose"></h2>
+        <div class="scoreplace">
+            <h3 id="score">clicks: 0</h3>
+        </div>
+        <div class="text">
+
+        </div>
+        <input type="text" id="username" name="username" placeholder="Enter username">
+        <button id="submit">Submit</button>
+        <p>click fast to get better shoes!!!!</p>
+        <div class="row">
+            <div class="avatar">
+                <img id="picture" height="180" width="230" alt="your avatar!" src="https://images.stockx.com/images/Air-Jordan-4-Retro-Red-Thunder-GS-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1641935707">
+            </div>
+        </div>
+        <button id="click">CLICK!</button>
+        <div class="row">
+            <fieldset>
+                <legend><h3>Shop</h3></legend>
+                <div class="row">
+                    <label for="1">Can get 1 more. (minimum 20 )</label>
+                    <button id="1">Buy</button>
+                </div>
+                <div class="row">
+                    <label for="5">Can get 5 more at a time (minimum 200)</label>
+                    <button id="5">Buy</button>
+                </div>
+                <div class="row">
+                    <label for="10">Can get 10 more (minimum 1,500)</label>
+                    <button id="10">Buy</button>
+                </div>
+                <div class="row">
+                    <label for="20">Can get 20 more(minimum 2,000)</label>
+                    <button id="20">Buy</button>
+                </div>
+                <div class="row">
+                    <label for="25">Can get 25 more(minimum 5,000)</label>
+                    <button id="25">Buy</button>
+                </div>
+                <div class="row">
+                    <label for="50">Can get 50 more (minimum 42,333 )</label>
+                    <button id="50">Buy</button>
+                </div>
+                <div class="row">
+                    <label for="100">Can get 100 more (minimum 1,000,000)</label>
+                    <button id="100">Buy</button>
+                </div>
+                <br>
+                <div class="row">
+                    <label for="win">cheat and win (??? CLICKS)</label>
+                    <button id="win">Buy</button>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>
+<script>
+    const content = document.querySelector('.text');
+
+    const user = document.querySelector('user');
+    const username = document.getElementById('username');
+    const submit = document.getElementById('submit');
+
+    submit.addEventListener('click', function(e){
+        let displayuser = username.value;
+
+        const actualuser = document.createElement('h2');
+        actualuser.innerHTML = `${displayuser}`;
+        content.insertAdjacentElement('afterbegin', actualuser);
+
+        const unwantedElement = document.querySelector('#lose');
+        unwantedElement.remove();
+
+        username.classList.add("hidden");
+        submit.classList.add("hidden");
+    });
+
+    let score = document.getElementById('score');
+    const scorePlace = document.querySelector('.scoreplace');
+    const click = document.getElementById('click');
+    const picture = document.getElementById('picture');
+
+    score = 0;
+    click.addEventListener('click', function(e){
+        score++;
+        scorePlace.innerHTML = `<h3 id="score">CLICK: ${score}</h3>`;
+
+        if(score >= 10000){
+            picture.src = "data:image/jpeg;base64,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";
+        }
+        else if(score >= 1000){
+            picture.src = "https://m.media-amazon.com/images/I/61Wt6-2b-iL._AC_UY1000_.jpg";
+        }
+        else if(score >= 800){
+            picture.src = "https://images.stockx.com/images/Air-Jordan-4-Retro-Travis-Scott-Olive.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1674055125";
+        }
+        else if(score >= 600){
+            picture.src = "https://cdn.restocks.net/cdn-cgi/image/width=1000/storage/images/products/DJ0675-200/2.png";
+        }
+        else if(score >= 500){
+            picture.src = "https://cdn.shopify.com/s/files/1/0672/2384/7179/products/air-jordan-4-seafoam-1_5000x_d1665a96-2757-4a2e-a6b7-f440fd08f5ab.png?v=1676250653";
+        }
+        else if(score >= 400){
+            picture.src = "https://www.sneakerfiles.com/wp-content/uploads/2008/03/air-jordan-retro-4-pure.jpg";
+        }
+        else if(score >= 200){
+            picture.src = "https://i0.wp.com/justfreshkicks.com/wp-content/uploads/2022/08/Air-Jordan-4-Messy-Room-DR6952-400-Release-Date.jpeg?fit=1200%2C865&ssl=1";
+        }
+        else if(score >= 100){
+            picture.src = "data:image/jpeg;base64,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";
+        }
+        else if (score >= 70){
+            picture.src = "https://cdn.shopify.com/s/files/1/0415/3753/6151/products/pic1_1024x.jpg?v=1634911563";
+        }
+        else if (score >= 60){
+            picture.src = "https://cdn.shopify.com/s/files/1/0667/4366/4860/products/Jordan4MetallicPurple.webp?v=1668291678";
+        }
+        else if (score >= 40){
+            picture.src = "https://cdn.shopify.com/s/files/1/0624/6101/8337/products/air-jordan-4-retro-metallic-red-319595.png?v=1663369026";
+        }
+        else if (score >= 20){
+            picture.src = "https://images.stockx.com/images/Air-Jordan-4-Retro-White-Oreo-2021-Product.jpg?fit=fill&bg=FFFFFF&w=1200&h=857&fm=webp&auto=compress&dpr=2&trim=color&updated_at=1620919867&q=75";
+        }
+    });
+
+    const times2 = document.getElementById('1');
+
+    let i = 1;
+
+    times2.addEventListener('click', function(e){
+        if(score >= 20){
+            score -= 20;
+            click.addEventListener('click', function(e){
+                score += i;
+                scorePlace.innerHTML = `<h3 id="score">CLICK: ${score}</h3>`;
+            });
+        }
+    });
+
+    const times5 = document.getElementById('5');
+
+    let q = 5;
+
+    times5.addEventListener('click', function(e){
+        if(score >= 200){
+            score -= 200;
+            click.addEventListener('click', function(e){
+                score += q;
+                scorePlace.innerHTML = `<h3 id="score">CLICK: ${score}</h3>`;
+            });
+        }
+    });
+
+    const times10 = document.getElementById('5');
+
+    let w = 5;
+
+    times10.addEventListener('click', function(e){
+        if(score >= 1500){
+            score -= 1500;
+            click.addEventListener('click', function(e){
+                score += w;
+                scorePlace.innerHTML = `<h3 id="score">CLICK: ${score}</h3>`;
+            });
+        }
+    });
+
+    const times20 = document.getElementById('5');
+
+    let l = 5;
+
+    times25.addEventListener('click', function(e){
+        if(score >= 2000){
+            score -= 2000;
+            click.addEventListener('click', function(e){
+                score += l;
+                scorePlace.innerHTML = `<h3 id="score">CLICK: ${score}</h3>`;
+            });
+        }
+    });
+
+    const times25 = document.getElementById('5');
+
+    let a = 5;
+
+    times25.addEventListener('click', function(e){
+        if(score >= 5000){
+            score -= 5000;
+            click.addEventListener('click', function(e){
+                score += a;
+                scorePlace.innerHTML = `<h3 id="score">CLICK: ${score}</h3>`;
+            });
+        }
+    });
+
+</script>
+</body>
+</html>
